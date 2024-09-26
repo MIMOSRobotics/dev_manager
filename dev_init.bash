@@ -29,8 +29,13 @@ export WS_DEV_SESSION_CHECK=1
 ###### DISPLAY ######
 clear -x
 echo -e "\e[33m===================================================================
-            ROS 2 Development Manager (by Mahir Sehmi)
-==================================================================="
+                      _______  _   _        __      __
+                  /\ |__   __|| \ | |    /\ \ \    / /
+                 /  \   | |   |  \| |   /  \ \ \  / /
+                / /\ \  | |   |     |  / /\ \ \ \/ /
+               / ____ \ | |   | |\  | / ____ \ \  / 
+              /_/    \_\|_|   |_| \_|/_/    \_\ \/
+=================================================== Est. 2023 ====="
 echo -e "$BASH_INFO Initializing..."
 if [ "$WS_DEV_MANAGER_REVISION" -lt "$DEV_MANAGER_REVISION" ]; then
 	echo -e "$BASH_WARNING The current project is using development manager revision \e[36m$WS_DEV_MANAGER_REVISION\e[0m which is older than current manager revision \e[36m$DEV_MANAGER_REVISION\e[0m. You may continue using but some features may not work. Please use older version or upgrade current project repo following the latest content."
