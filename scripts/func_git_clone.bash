@@ -25,13 +25,23 @@ function git_clone {
         then
             REPO_DIR_NAME="${BASH_REMATCH[1]}"
         fi
-        echo -e "$BASH_INFO into '$REPO_DIR_NAME' directory."
-        git clone $URL $REPO_DIR_NAME
+        
+        # check if REPO_DIR_NAME already exists. If exists, skip cloning. Else, clone the repo.
+        if [ -d "$CLONE_DIR/$REPO_DIR_NAME" ]
+        then
+            echo -e "$BASH_WARNING Directory \e[36m$REPO_DIR_NAME\e[0m already exists in \e[36m$CLONE_DIR\e[0m. Will not clone."
+        else
+            echo -e "$BASH_INFO into '$REPO_DIR_NAME' directory."
+            git clone $URL $REPO_DIR_NAME
+        fi
+        
         
         if [[ $COMMIT_ID != "" ]]
         then
-            echo -e "$BASH_INFO Checking out $COMMIT_ID"
             cd $CLONE_DIR/$REPO_DIR_NAME
+            echo -e "$BASH_INFO Fetching any latest changes $COMMIT_ID"
+            git fetch
+            echo -e "$BASH_INFO Checking out $COMMIT_ID"
             git checkout $COMMIT_ID
             if [[ "$COMMIT_ID" = "$(git rev-parse HEAD)" ]] # Check if it is a full commit SHA
             then
@@ -52,6 +62,8 @@ function git_clone {
         else
             echo -e "$BASH_WARNING No commit ID or tag given. Will use latest commit from main branch instead."
             cd $CLONE_DIR/$REPO_DIR_NAME
+            echo -e "$BASH_INFO Fetching and merging any latest changes $COMMIT_ID"
+            git pull
             echo -e "$BASH_INFO Initializing any submodule."
             git submodule init
             git submodule update
@@ -61,5 +73,5 @@ function git_clone {
         echo -e "$BASH_ERROR Can't clone with proper directory name. Check for typo!"
         echo -e "$BASH_WARNING Will not clone '$URL'"
     fi
-    
+
 }
