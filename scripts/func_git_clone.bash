@@ -39,7 +39,7 @@ function git_clone {
         if [[ $COMMIT_ID != "" ]]
         then
             cd $CLONE_DIR/$REPO_DIR_NAME
-            echo -e "$BASH_INFO Fetching any latest changes $COMMIT_ID"
+            echo -e "$BASH_INFO Fetching any latest changes.."
             git fetch
             echo -e "$BASH_INFO Checking out $COMMIT_ID"
             git checkout $COMMIT_ID
@@ -62,7 +62,7 @@ function git_clone {
         else
             echo -e "$BASH_WARNING No commit ID or tag given. Will use latest commit from main branch instead."
             cd $CLONE_DIR/$REPO_DIR_NAME
-            echo -e "$BASH_INFO Fetching and merging any latest changes $COMMIT_ID"
+            echo -e "$BASH_INFO Fetching and merging any latest changes..."
             git pull
             echo -e "$BASH_INFO Initializing any submodule."
             git submodule init
