@@ -93,7 +93,7 @@ then
     cd $TEMP_PKG_OPERATION_DIR
     echo -e "$BASH_INFO Checking and installing dependencies"
     rosdep update
-    rosdep install --from-paths src --ignore-src -y
+    rosdep install -y -r -q --from-paths src --ignore-src --rosdistro $ROS_DISTRO -y
     cd $CURRENT_TERMINAL_DIR
 fi
 
