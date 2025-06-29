@@ -44,5 +44,18 @@ else
         # activate the venv
         source $WS_PROJECT_REPO/pkg/pyenv/$WS_PYTHON_ENV_NAME/bin/activate
     fi
+
+    # get the python version (e.g., python3.8)
+    PYTHON_VERSION=$(python3 -c "import sys; print(f'python{sys.version_info.major}.{sys.version_info.minor}')")
+    PYTHON_SITE_PACKAGES="$WS_PROJECT_REPO/pkg/pyenv/$WS_PYTHON_ENV_NAME/lib/$PYTHON_VERSION/site-packages"
+    
+    # check if the python environment path has been added to PYTHONPATH, if not add it
+    if [[ ":$PYTHONPATH:" != *":$PYTHON_SITE_PACKAGES:"* ]]
+    then
+        echo -e "$BASH_INFO Adding \e[36m$PYTHON_SITE_PACKAGES\e[0m to PYTHONPATH"
+        export PYTHONPATH="$PYTHON_SITE_PACKAGES:$PYTHONPATH"
+    else
+        echo -e "$BASH_INFO \e[36m$PYTHON_SITE_PACKAGES\e[0m already in PYTHONPATH"
+    fi
 fi
 
