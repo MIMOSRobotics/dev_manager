@@ -31,9 +31,9 @@ if [ "$WS_PROJECT_REPO" == "$WS_DIR/$WS_DEV_MANAGER_DIR_NAME/temp" ]; then
 else
 	export WS_DEV_SESSION_CHECK=1
 	source $WS_DEV_MANAGER_DIR/config/settings.bash
-	source $WS_DEV_MANAGER_DIR/config/aliases.bash
 	source $WS_PROJECT_REPO/config/settings.bash    # If contain duplicate, this will overwrite settings from dev_manager.
 	source $WS_PROJECT_REPO/config/aliases.bash     # If contain duplicate, this will overwrite aliases from dev_manager.
+	source $WS_DEV_MANAGER_DIR/config/aliases.bash
 	source $WS_PROJECT_REPO/config/init.bash
 fi
 
