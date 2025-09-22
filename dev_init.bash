@@ -43,7 +43,6 @@ alias r2dev="source $WS_DEV_MANAGER_DIR/scripts/menu_dev_manager.bash"
 
 
 ###### DISPLAY ######
-clear -x
 source $WS_DEV_MANAGER_DIR/scripts/display_signature.bash
 echo -e "\e[33m============================= INIT ================================\e[0m"
 echo -e "$BASH_INFO Initializing..."
