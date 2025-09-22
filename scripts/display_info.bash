@@ -1,4 +1,3 @@
-source $WS_DEV_MANAGER_DIR/scripts/display_signature.bash
 echo -e "\e[33m======================= WORKSPACE INFO ============================\e[0m"
 echo -e "\e[33mProject Name: \e[36m$DEV_PROJECT_NAME\e[0m"
 echo -e "\e[33mProject Path: \e[36m$WS_PROJECT_REPO\e[0m"

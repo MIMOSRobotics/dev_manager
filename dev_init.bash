@@ -77,5 +77,5 @@ if [ $WS_DEV_SESSION_CHECK == 1 ]; then
 	echo -e "$BASH_INFO Type '\e[35mr2info\e[0m' for workspace info."
 	echo -e "$BASH_INFO Type '\e[35mr2pkg\e[0m' for package manager menu."
 	r2cdw
-	r2info
+	source $WS_DEV_MANAGER_DIR/scripts/display_info.bash && source $WS_PROJECT_REPO/config/scripts/display_info.bash
 fi
